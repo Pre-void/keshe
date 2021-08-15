@@ -1,0 +1,358 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta http-equiv="Content-Type" content="text/html;charset=UTF-8" xmlns:th="http://www.thymeleaf.org">
+    <title>首页</title>
+    <link rel="stylesheet" type="text/css" href="/css/reset.css">
+    <link rel="stylesheet" type="text/css" href="/css/main3.css">
+    <link rel="shortcut icon" href="/img/title.ico" type="image/x-icon" />
+    <script type="text/javascript" src="/js/jquery-1.12.4.min.js"></script>
+    <script type="text/javascript" src="/js/jquery-ui.min.js"></script>
+    <script type="text/javascript" src="/js/slide.js"></script>
+</head>
+<body>
+<div class="header_con">
+    <div class="header">
+        <div class="welcome fl">欢迎来到319购物商城!</div>
+        <div class="fr">
+            <div class="login_btn fl">
+                <a>欢迎您 用户</a>
+                <a >[[${session.loginUser}]]</a>
+            </div>
+            <div class="user_link fl">
+                <span>|</span>
+                <a th:href="@{/user/info(user=${session.loginUser})}">用户中心</a>
+                <span>|</span>
+                <a th:href="@{/user/cart(user=${session.loginUser})}">我的购物车</a>
+                <span>|</span>
+                <a href="/user/order">我的订单</a>
+                <span>|</span>
+                <a href="/user/exit">退出登录</a>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="search_bar clearfix">
+    <a href="/user/home" class="logo fl"><img src="/img/logo.png"></a>
+    <div class="search_con fl">
+        <form action="/user/find">
+        <input type="text" class="input_text fl" name="name" placeholder="搜索商品">
+        <input type="submit" class="input_btn fr" name="" value="搜索">
+        </form>
+    </div>
+    <div class="guest_cart fr">
+        <a th:href="@{/user/cart(user=${session.loginUser})}" class="cart_name fl">我的购物车</a>
+        <div class="goods_count fl" id="show_count" th:text="${cart_count}">1</div>
+    </div>
+</div>
+
+<div class="navbar_con">
+    <div class="navbar">
+        <h1 class="fl">全部商品分类</h1>
+        <!--<ul class="navlist fl">-->
+            <!--<li><a href="">首页</a></li>-->
+            <!--<li class="interval">|</li>-->
+            <!--<li><a href="">手机生鲜</a></li>-->
+            <!--<li class="interval">|</li>-->
+            <!--<li><a href="">抽奖</a></li>-->
+        <!--</ul>-->
+    </div>
+</div>
+
+<div class="center_con clearfix">
+    <ul class="subnav fl">
+        <li><a href="#model01" class="fruit">电脑主机</a></li>
+        <li><a href="#model02" class="seafood">游戏设备</a></li>
+        <li><a href="#model03" class="meet">智潮手机</a></li>
+        <li><a href="#model04" class="egg">影音智能</a></li>
+        <li><a href="#model05" class="vegetables">生活厨电</a></li>
+        <li><a href="#model06" class="ice">拍照摄像</a></li>
+    </ul>
+    <div class="slide fl">
+        <ul class="slide_pics">
+            <li><img src="/img/slide.png" alt="幻灯片"></li>
+            <li><img src="/img/slide02.png" alt="幻灯片"></li>
+            <li><img src="/img/slide03.png" alt="幻灯片"></li>
+            <li><img src="/img/slide04.png" alt="幻灯片"></li>
+        </ul>
+        <div class="prev"></div>
+        <div class="next"></div>
+        <ul class="points"></ul>
+    </div>
+    <div class="adv fl">
+        <a href="#"><img src="/img/adv01.jpg"></a>
+        <a href="#"><img src="/img/adv02.jpg"></a>
+    </div>
+</div>
+
+<div class="list_model">
+    <div class="list_title clearfix">
+        <h3 class="fl" id="model01">电脑主机</h3>
+        <div class="subtitle fl">
+            <span>|</span>
+            <a href="#">Macbook</a>
+            <a href="#">水冷主机</a>
+            <a href="#">ipad</a>
+        </div>
+        <a href="#" class="goods_more fr" id="fruit_more">查看更多 ></a>
+    </div>
+
+    <div class="goods_con clearfix">
+        <div class="goods_banner fl"><img src="/img/icon/5.png" ></div>
+
+        <ul class="goods_list fl" >
+
+            <li>
+                <h4><a th:text="${goods0.goodsName}">Asus/华硕</a></h4>
+                <a th:href="@{/user/xiangqing(id=${goods0.goodsId})}" ><img src="/img/products/1.png" th:src="${goods0.GoodsImg}"></a>
+                <div class="prize" th:text="'￥ '+${goods0.GoodsPrice}">¥ 1699.90</div>
+            </li>
+            <li>
+                <h4><a th:text="${goods1.GoodsName}" >苹果风一体机电脑</a></h4>
+                <a th:href="@{/user/xiangqing(id=${goods1.goodsId})}"><img src="/img/products/2.png" th:src="${goods1.GoodsImg}"></a>
+                <div class="prize" th:text="'￥ '+${goods1.GoodsPrice}">¥ 1699.90</div>
+            </li>
+            <li>
+                <h4><a th:text="${goods2.GoodsName}" >苹果风一体机电脑</a></h4>
+                <a th:href="@{/user/xiangqing(id=${goods2.goodsId})}"><img src="/img/products/2.png" th:src="${goods2.GoodsImg}"></a>
+                <div class="prize" th:text="'￥ '+${goods2.GoodsPrice}">¥ 1699.90</div>
+            </li>
+            <li>
+                <h4><a th:text="${goods3.GoodsName}" >苹果风一体机电脑</a></h4>
+                <a th:href="@{/user/xiangqing(id=${goods3.goodsId})}"><img src="/img/products/2.png" th:src="${goods3.GoodsImg}"></a>
+                <div class="prize" th:text="'￥ '+${goods3.GoodsPrice}">¥ 1699.90</div>
+            </li>
+        </ul>
+
+    </div>
+</div>
+
+<div class="list_model">
+    <div class="list_title clearfix">
+        <h3 class="fl" id="model02">游戏设备</h3>
+        <div class="subtitle fl">
+            <span>|</span>
+            <a href="#">游戏鼠标</a>
+            <a href="#">机械键盘</a>
+            <a href="#">VR眼镜</a>
+        </div>
+        <a href="#" class="goods_more fr">查看更多 ></a>
+    </div>
+
+    <div class="goods_con clearfix">
+        <div class="goods_banner fl"><img src="/img/icon/6.png"></div>
+        <ul class="goods_list fl">
+            <li>
+                <h4><a th:text="${goods4.GoodsName}" >苹果风一体机电脑</a></h4>
+                <a th:href="@{/user/xiangqing(id=${goods4.goodsId})}"><img src="/img/products/2.png" th:src="${goods4.GoodsImg}"></a>
+                <div class="prize" th:text="'￥ '+${goods4.GoodsPrice}">¥ 1699.90</div>
+            </li>
+            <li>
+                <h4><a th:text="${goods5.GoodsName}" >苹果风一体机电脑</a></h4>
+                <a th:href="@{/user/xiangqing(id=${goods5.goodsId})}"><img src="/img/products/2.png" th:src="${goods5.GoodsImg}"></a>
+                <div class="prize" th:text="'￥ '+${goods5.GoodsPrice}">¥ 1699.90</div>
+            </li>
+            <li>
+                <h4><a th:text="${goods6.GoodsName}" >苹果风一体机电脑</a></h4>
+                <a th:href="@{/user/xiangqing(id=${goods6.goodsId})}"><img src="/img/products/2.png" th:src="${goods6.GoodsImg}"></a>
+                <div class="prize" th:text="'￥ '+${goods6.GoodsPrice}">¥ 1699.90</div>
+            </li>
+            <li>
+                <h4><a th:text="${goods7.GoodsName}" >苹果风一体机电脑</a></h4>
+                <a th:href="@{/user/xiangqing(id=${goods7.goodsId})}"><img src="/img/products/2.png" th:src="${goods7.GoodsImg}"></a>
+                <div class="prize" th:text="'￥ '+${goods7.GoodsPrice}">¥ 1699.90</div>
+            </li>
+        </ul>
+    </div>
+</div>
+
+<div class="list_model">
+    <div class="list_title clearfix">
+        <h3 class="fl" id="model03">智潮手机</h3>
+        <div class="subtitle fl">
+            <span>|</span>
+            <a href="#">小米8</a>
+            <a href="#">荣耀9</a>
+            <a href="#">iPhone x</a>
+        </div>
+        <a href="#" class="goods_more fr">查看更多 ></a>
+    </div>
+
+    <div class="goods_con clearfix">
+        <div class="goods_banner fl"><img src="/img/icon/7.png"></div>
+        <ul class="goods_list fl">
+            <li>
+                <h4><a th:text="${goods8.GoodsName}" >苹果风一体机电脑</a></h4>
+                <a th:href="@{/user/xiangqing(id=${goods8.goodsId})}"><img src="/img/products/2.png" th:src="${goods8.GoodsImg}"></a>
+                <div class="prize" th:text="'￥ '+${goods8.GoodsPrice}">¥ 1699.90</div>
+            </li>
+            <li>
+                <h4><a th:text="${goods9.GoodsName}" >苹果风一体机电脑</a></h4>
+                <a th:href="@{/user/xiangqing(id=${goods9.goodsId})}"><img src="/img/products/2.png" th:src="${goods9.GoodsImg}"></a>
+                <div class="prize" th:text="'￥ '+${goods9.GoodsPrice}">¥ 1699.90</div>
+            </li>
+            <li>
+                <h4><a th:text="${goods10.GoodsName}" >苹果风一体机电脑</a></h4>
+                <a th:href="@{/user/xiangqing(id=${goods10.goodsId})}"><img src="/img/products/2.png" th:src="${goods10.GoodsImg}"></a>
+                <div class="prize" th:text="'￥ '+${goods10.GoodsPrice}">¥ 1699.90</div>
+            </li>
+            <li>
+                <h4><a th:text="${goods11.GoodsName}" >苹果风一体机电脑</a></h4>
+                <a th:href="@{/user/xiangqing(id=${goods11.goodsId})}"><img src="/img/products/2.png" th:src="${goods11.GoodsImg}"></a>
+                <div class="prize" th:text="'￥ '+${goods11.GoodsPrice}">¥ 1699.90</div>
+            </li>
+        </ul>
+    </div>
+</div>
+
+<div class="list_model">
+    <div class="list_title clearfix">
+        <h3 class="fl" id="model04">影音智能</h3>
+        <div class="subtitle fl">
+            <span>|</span>
+            <a href="#">手机耳机</a>
+            <a href="#">蓝牙音箱</a>
+            <a href="#">智能手表</a>
+        </div>
+        <a href="#" class="goods_more fr">查看更多 ></a>
+    </div>
+
+    <div class="goods_con clearfix">
+        <div class="goods_banner fl"><img src="/img/icon/9.png"></div>
+        <ul class="goods_list fl">
+            <li>
+                <h4><a th:text="${goods12.GoodsName}" >苹果风一体机电脑</a></h4>
+                <a th:href="@{/user/xiangqing(id=${goods12.goodsId})}"><img src="/img/products/2.png" th:src="${goods12.GoodsImg}"></a>
+                <div class="prize" th:text="'￥ '+${goods12.GoodsPrice}">¥ 1699.90</div>
+            </li>
+            <li>
+                <h4><a th:text="${goods13.GoodsName}" >苹果风一体机电脑</a></h4>
+                <a th:href="@{/user/xiangqing(id=${goods13.goodsId})}"><img src="/img/products/2.png" th:src="${goods13.GoodsImg}"></a>
+                <div class="prize" th:text="'￥ '+${goods13.GoodsPrice}">¥ 1699.90</div>
+            </li>
+            <li>
+                <h4><a th:text="${goods14.GoodsName}" >苹果风一体机电脑</a></h4>
+                <a th:href="@{/user/xiangqing(id=${goods14.goodsId})}"><img src="/img/products/2.png" th:src="${goods14.GoodsImg}"></a>
+                <div class="prize" th:text="'￥ '+${goods14.GoodsPrice}">¥ 1699.90</div>
+            </li>
+            <li>
+                <h4><a th:text="${goods15.GoodsName}" >苹果风一体机电脑</a></h4>
+                <a th:href="@{/user/xiangqing(id=${goods15.goodsId})}"><img src="/img/products/2.png" th:src="${goods15.GoodsImg}"></a>
+                <div class="prize" th:text="'￥ '+${goods15.GoodsPrice}">¥ 1699.90</div>
+            </li>
+        </ul>
+    </div>
+</div>
+
+<div class="list_model">
+    <div class="list_title clearfix">
+        <h3 class="fl" id="model05">生活厨电</h3>
+        <div class="subtitle fl">
+            <span>|</span>
+            <a href="#">空气净化器</a>
+            <a href="#">电热水壶</a>
+            <a href="#">扫地机器人</a>
+        </div>
+        <a href="#" class="goods_more fr">查看更多 ></a>
+    </div>
+
+    <div class="goods_con clearfix">
+        <div class="goods_banner fl"><img src="/img/icon/10.png"></div>
+        <ul class="goods_list fl">
+            <li>
+                <h4><a th:text="${goods16.GoodsName}" >苹果风一体机电脑</a></h4>
+                <a th:href="@{/user/xiangqing(id=${goods16.goodsId})}"><img src="/img/products/2.png" th:src="${goods16.GoodsImg}"></a>
+                <div class="prize" th:text="'￥ '+${goods16.GoodsPrice}">¥ 1699.90</div>
+            </li>
+            <li>
+                <h4><a th:text="${goods17.GoodsName}" >苹果风一体机电脑</a></h4>
+                <a th:href="@{/user/xiangqing(id=${goods17.goodsId})}"><img src="/img/products/2.png" th:src="${goods17.GoodsImg}"></a>
+                <div class="prize" th:text="'￥ '+${goods17.GoodsPrice}">¥ 1699.90</div>
+            </li>
+            <li>
+                <h4><a th:text="${goods18.GoodsName}" >苹果风一体机电脑</a></h4>
+                <a th:href="@{/user/xiangqing(id=${goods18.goodsId})}"><img src="/img/products/2.png" th:src="${goods18.GoodsImg}"></a>
+                <div class="prize" th:text="'￥ '+${goods18.GoodsPrice}">¥ 1699.90</div>
+            </li>
+            <li>
+                <h4><a th:text="${goods19.GoodsName}" >苹果风一体机电脑</a></h4>
+                <a th:href="@{/user/xiangqing(id=${goods19.goodsId})}"><img src="/img/products/2.png" th:src="${goods19.GoodsImg}"></a>
+                <div class="prize" th:text="'￥ '+${goods19.GoodsPrice}">¥ 1699.90</div>
+            </li>
+        </ul>
+    </div>
+</div>
+
+<div class="list_model">
+    <div class="list_title clearfix">
+        <h3 class="fl" id="model06">拍照摄像</h3>
+        <div class="subtitle fl">
+            <span>|</span>
+            <a href="#">索尼相机</a>
+            <a href="#">佳能相机</a>
+            <a href="#">宾得相机</a>
+        </div>
+        <a href="#" class="goods_more fr">查看更多 ></a>
+    </div>
+
+    <div class="goods_con clearfix">
+        <div class="goods_banner fl"><img src="/img/icon/11.png"></div>
+        <ul class="goods_list fl">
+            <li>
+                <h4><a th:text="${goods20.GoodsName}" >苹果风一体机电脑</a></h4>
+                <a th:href="@{/user/xiangqing(id=${goods20.goodsId})}"><img src="/img/products/2.png" th:src="${goods20.GoodsImg}"></a>
+                <div class="prize" th:text="'￥ '+${goods20.GoodsPrice}">¥ 1699.90</div>
+            </li>
+            <li>
+                <h4><a th:text="${goods21.GoodsName}" >苹果风一体机电脑</a></h4>
+                <a th:href="@{/user/xiangqing(id=${goods21.goodsId})}"><img src="/img/products/2.png" th:src="${goods21.GoodsImg}"></a>
+                <div class="prize" th:text="'￥ '+${goods21.GoodsPrice}">¥ 1699.90</div>
+            </li>
+            <li>
+                <h4><a th:text="${goods22.GoodsName}" >苹果风一体机电脑</a></h4>
+                <a th:href="@{/user/xiangqing(id=${goods22.goodsId})}"><img src="/img/products/2.png" th:src="${goods22.GoodsImg}"></a>
+                <div class="prize" th:text="'￥ '+${goods22.GoodsPrice}">¥ 1699.90</div>
+            </li>
+            <li>
+                <h4><a th:text="${goods23.GoodsName}" >苹果风一体机电脑</a></h4>
+                <a th:href="@{/user/xiangqing(id=${goods23.goodsId})}"><img src="/img/products/2.png" th:src="${goods23.GoodsImg}"></a>
+                <div class="prize" th:text="'￥ '+${goods23.GoodsPrice}">¥ 1699.90</div>
+            </li>
+        </ul>
+    </div>
+</div>
+
+<div class="footer">
+    <div class="foot_link">
+        <a href="#">关于我们</a>
+        <span>|</span>
+        <a href="#">联系我们</a>
+        <span>|</span>
+        <a href="#">招聘人才</a>
+        <span>|</span>
+        <a href="#">友情链接</a>
+    </div>
+    <p>CopyRight © 2016  All Rights Reserved</p>
+    <p>电话：18870753605 </p>
+</div>
+<script type="text/javascript" src="/js/slideshow.js"></script>
+<script type="text/javascript">
+    BCSlideshow('focuspic');
+    var oFruit = document.getElementById('fruit_more');
+    var oShownum = document.getElementById('show_count');
+
+    var hasorder = localStorage.getItem('order_finish');
+
+    if(hasorder)
+    {
+        oShownum.innerHTML = '2';
+    }
+
+    oFruit.onclick = function(){
+        window.location.href = 'list.html';
+    }
+
+</script>
+</body>
+</html>

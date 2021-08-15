@@ -1,0 +1,39 @@
+<!DOCTYPE html >
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<script type="text/javascript">
+    function f() {
+        var fo = document.getElementById("form");
+        fo.action = "/user/yzm";
+        fo.submit();
+
+    }
+
+    function next() {
+        var fo = document.getElementById("form");
+        fo.action = "/user/next";
+        fo.submit();
+    }
+</script>
+ 
+
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+
+</head>
+<body>
+<form name="form1" id="form" action="" method="post"> 
+    <input type="text" name="tele" >
+    <br>
+     
+    <input type="text" name="yzm" >
+        <input Type="Button" value="获取验证码" onClick="f()" >
+    <br>
+         <input Type="Button" value="下一步" onClick="next()"> 
+        
+</form>
+ 
+
+
+</body>
+</html>

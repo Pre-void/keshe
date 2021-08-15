@@ -1,0 +1,138 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+        "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta http-equiv="Content-Type" content="text/html;charset=UTF-8">
+    <title>用户中心</title>
+    <link rel="shortcut icon" href="/img/title.ico" type="image/x-icon"/>
+    <link rel="stylesheet" type="text/css" href="/css/reset.css">
+    <link rel="stylesheet" type="text/css" href="/css/main3.css">
+</head>
+<body>
+<div class="header_con">
+    <div class="header">
+        <div class="welcome fl">欢迎来到319购物商城!</div>
+        <div class="fr">
+            <div class="login_btn fl">
+                <a>欢迎您 用户</a>
+                <a>[[${session.loginUser}]]</a>
+            </div>
+            <div class="user_link fl">
+                <span>|</span>
+                <a th:href="@{/user/info(user=${session.loginUser})}">用户中心</a>
+                <span>|</span>
+                <a th:href="@{/user/cart(user=${session.loginUser})}">我的购物车</a>
+                <span>|</span>
+                <a href="/user/order">我的订单</a>
+                <span>|</span>
+                <a href="/user/exit">退出登录</a>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="search_bar clearfix">
+    <a href="/user/home" class="logo fl"><img src="/img/logo.png"></a>
+    <div class="sub_page_name fl">|&nbsp;&nbsp;&nbsp;&nbsp;用户中心</div>
+    <div class="search_con fl">
+        <form action="/user/find">
+            <input type="text" class="input_text fl" name="name" placeholder="搜索商品">
+            <input type="submit" class="input_btn fr" name="" value="搜索">
+        </form>
+    </div>
+</div>
+
+<div class="main_con clearfix">
+    <div class="left_menu_con clearfix">
+        <h3>用户中心</h3>
+        <ul>
+            <li><a th:href="@{/user/info(user=${session.loginUser})}" class="active">· 个人信息</a></li>
+            <li><a href="/user/order">· 全部订单</a></li>
+            <li><a th:href="@{/user/site(user=${session.loginUser})}">· 收货地址</a></li>
+        </ul>
+    </div>
+    <div class="right_content clearfix">
+        <div class="info_con clearfix">
+            <h3 class="common_title2">基本信息</h3>
+            <ul class="user_info_list">
+                <li><span >用户名：</span><em th:text="${session.loginUser}">1</em></li>
+                <li><span >联系方式：</span><em th:text="${tele}">1</em></li>
+                <li><span >联系地址：</span> <em th:text="${address}">1</em></li>
+            </ul>
+        </div>
+
+        <h3 class="common_title2">最近浏览</h3>
+        <div class="has_view_list">
+            <ul class="goods_type_list clearfix">
+                <li>
+                    <a th:href="@{/user/xiangqing(id=${goods2.goodsId})}"><img src="/img/goods/goods003.jpg" th:src="${goods2.GoodsImg}"></a>
+                    <h4><a th:text="${goods2.GoodsName}">大兴大棚草莓</a></h4>
+                    <div class="operate">
+                        <span class="prize" th:text="${goods2.GoodsPrice}">￥16.80</span>
+                        <span class="unit" th:text="${goods2.GoodsType}">16.80/500g</span>
+                        <a th:href="@{/user/info_add_cart(id=${goods2.goodsId},user=${session.loginUser})}" class="add_goods" title="加入购物车"></a>
+                    </div>
+                </li>
+
+                <li>
+                    <a th:href="@{/user/xiangqing(id=${goods6.goodsId})}"><img src="/img/goods/goods003.jpg" th:src="${goods6.GoodsImg}"></a>
+                    <h4><a th:text="${goods6.GoodsName}">大兴大棚草莓</a></h4>
+                    <div class="operate">
+                        <span class="prize" th:text="${goods6.GoodsPrice}">￥16.80</span>
+                        <span class="unit" th:text="${goods6.GoodsType}">16.80/500g</span>
+                        <a th:href="@{/user/info_add_cart(id=${goods6.goodsId},user=${session.loginUser})}" class="add_goods" title="加入购物车"></a>
+                    </div>
+                </li>
+
+                <li>
+                    <a th:href="@{/user/xiangqing(id=${goods12.goodsId})}"><img src="/img/goods/goods003.jpg" th:src="${goods12.GoodsImg}"></a>
+                    <h4><a th:text="${goods12.GoodsName}">大兴大棚草莓</a></h4>
+                    <div class="operate">
+                        <span class="prize" th:text="${goods12.GoodsPrice}">￥16.80</span>
+                        <span class="unit" th:text="${goods12.GoodsType}">16.80/500g</span>
+                        <a th:href="@{/user/info_add_cart(id=${goods12.goodsId},user=${session.loginUser})}" class="add_goods" title="加入购物车"></a>
+                    </div>
+                </li>
+
+                <li>
+                    <a  th:href="@{/user/xiangqing(id=${goods22.goodsId})}"><img src="/img/goods/goods003.jpg" th:src="${goods22.GoodsImg}"></a>
+                    <h4><a th:text="${goods22.GoodsName}">大兴大棚草莓</a></h4>
+                    <div class="operate">
+                        <span class="prize" th:text="${goods22.GoodsPrice}">￥16.80</span>
+                        <span class="unit" th:text="${goods22.GoodsType}">16.80/500g</span>
+                        <a th:href="@{/user/info_add_cart(id=${goods22.goodsId},user=${session.loginUser})}" class="add_goods" title="加入购物车"></a>
+                    </div>
+                </li>
+
+                <li>
+                    <a  th:href="@{/user/xiangqing(id=${goods17.goodsId})}"><img src="/img/goods/goods003.jpg" th:src="${goods17.GoodsImg}"></a>
+                    <h4><a th:text="${goods17.GoodsName}">大兴大棚草莓</a></h4>
+                    <div class="operate">
+                        <span class="prize" th:text="${goods17.GoodsPrice}">￥16.80</span>
+                        <span class="unit" th:text="${goods17.GoodsType}">16.80/500g</span>
+                        <a th:href="@{/user/info_add_cart(id=${goods17.goodsId},user=${session.loginUser})}" class="add_goods" title="加入购物车"></a>
+                    </div>
+                </li>
+
+            </ul>
+        </div>
+    </div>
+</div>
+
+
+<div class="footer">
+    <div class="foot_link">
+        <a href="#">关于我们</a>
+        <span>|</span>
+        <a href="#">联系我们</a>
+        <span>|</span>
+        <a href="#">招聘人才</a>
+        <span>|</span>
+        <a href="#">友情链接</a>
+    </div>
+    <p>CopyRight © 2016 All Rights Reserved</p>
+    <p>电话：18870753605 </p>
+</div>
+
+</body>
+</html>

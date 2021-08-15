@@ -1,0 +1,142 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+	<meta http-equiv="Content-Type" content="text/html;charset=UTF-8">
+	<title>用户中心</title>
+	<link rel="shortcut icon" href="/img/title.ico" type="image/x-icon" />
+	<link rel="stylesheet" type="text/css" href="/css/reset.css">
+	<link rel="stylesheet" type="text/css" href="/css/main3.css">
+</head>
+<body>
+	<div class="header_con">
+		<div class="header">
+			<div class="welcome fl">欢迎来到319购物商城!</div>
+			<div class="fr">
+				<div class="login_btn fl">
+					<a>欢迎您 用户</a>
+					<a >[[${session.loginUser}]]</a>
+				</div>
+				<div class="user_link fl">
+					<span>|</span>
+					<a th:href="@{/user/info(user=${session.loginUser})}">用户中心</a>
+					<span>|</span>
+					<a th:href="@{/user/cart(user=${session.loginUser})}">我的购物车</a>
+					<span>|</span>
+					<a href="/user/order">我的订单</a>
+					<span>|</span>
+					<a href="/user/exit">退出登录</a>
+				</div>
+			</div>
+		</div>		
+	</div>
+
+	<div class="search_bar clearfix">
+		<a href="/user/home" class="logo fl"><img src="/img/logo.png"></a>
+		<div class="sub_page_name fl">|&nbsp;&nbsp;&nbsp;&nbsp;用户中心</div>
+		<div class="search_con fl">
+			<form action="/user/find">
+				<input type="text" class="input_text fl" name="name" placeholder="搜索商品">
+				<input type="submit" class="input_btn fr" name="" value="搜索">
+			</form>
+		</div>
+	</div>
+
+	<div class="main_con clearfix">
+		<div class="left_menu_con clearfix">
+			<h3>用户中心</h3>
+			<ul>
+				<li><a th:href="@{/user/info(user=${session.loginUser})}">· 个人信息</a></li>
+				<li><a href="/user/order" class="active">· 全部订单</a></li>
+				<li><a th:href="@{/user/site(user=${session.loginUser})}">· 收货地址</a></li>
+			</ul>
+		</div>
+		<div class="right_content clearfix">
+				<h3 class="common_title2">全部订单</h3>
+				<ul class="order_list_th w978 clearfix">
+					<li class="col01">2019-7-2 17:15:24</li>
+					<li class="col02">订单号：173195</li>
+					<li class="col02 stress">未支付</li>		
+				</ul>
+
+				<table class="order_list_table w980">
+					<tbody>
+						<tr>
+							<td width="55%">
+								<ul class="order_goods_list clearfix">
+									<li class="col01"><img src="/img/goods02.jpg" th:src="${goods1.goodsImg}"></li>
+									<li class="col02"><em th:text="${goods1.goodsName}">嘎啦苹果嘎啦苹果</em><em th:text="${goods1.goodsType}">11.80元/500g</em></li>
+									<li class="col03">1</li>
+									<li class="col04"><em th:text="${goods1.goodsPrice}">11.80元</em></li>
+								</ul>
+								<ul class="order_goods_list clearfix">
+									<li class="col01"><img src="/img/goods02.jpg" th:src="${goods5.goodsImg}"></li>
+									<li class="col02"><em th:text="${goods5.goodsName}">嘎啦苹果嘎啦苹果</em><em th:text="${goods5.goodsType}">11.80元/500g</em></li>
+									<li class="col03">1</li>
+									<li class="col04"><em th:text="${goods5.goodsPrice}">11.80元</em></li>
+								</ul>
+							</td>
+							<td width="15%" th:text="${goods5.goodsPrice}+${goods1.goodsPrice}">33.60元</td>
+							<td width="15%">待付款</td>
+							<td width="15%"><a href="#" class="oper_btn">去付款</a></td>
+						</tr>
+					</tbody>
+				</table>
+
+				<ul class="order_list_th w978 clearfix">
+					<li class="col01">2019-7-2 17:25:14</li>
+					<li class="col02">订单号：175087</li>
+					<li class="col02 stress">已支付</li>
+				</ul>
+
+			<table class="order_list_table w980">
+				<tbody>
+				<tr>
+					<td width="55%">
+						<ul class="order_goods_list clearfix">
+							<li class="col01"><img src="/img/goods02.jpg" th:src="${goods9.goodsImg}"></li>
+							<li class="col02"><em th:text="${goods9.goodsName}">嘎啦苹果嘎啦苹果</em><em th:text="${goods9.goodsType}">11.80元/500g</em></li>
+							<li class="col03">1</li>
+							<li class="col04"><em th:text="${goods9.goodsPrice}">11.80元</em></li>
+						</ul>
+						<ul class="order_goods_list clearfix">
+							<li class="col01"><img src="/img/goods02.jpg" th:src="${goods17.goodsImg}"></li>
+							<li class="col02"><em th:text="${goods17.goodsName}">嘎啦苹果嘎啦苹果</em><em th:text="${goods17.goodsType}">11.80元/500g</em></li>
+							<li class="col03">1</li>
+							<li class="col04"><em th:text="${goods17.goodsPrice}">11.80元</em></li>
+						</ul>
+					</td>
+					<td width="15%" th:text="${goods9.goodsPrice}+${goods17.goodsPrice}">33.60元</td>
+					<td width="15%">已付款</td>
+					<td width="15%"><a href="#" class="oper_btn">查看物流</a></td>
+				</tr>
+				</tbody>
+			</table>
+				<div class="pagenation">
+					<a href="#">上一页</a>
+					<a href="#" class="active">1</a>
+					<a href="#">2</a>
+					<a href="#">3</a>
+					<a href="#">4</a>
+					<a href="#">5</a>
+					<a href="#">下一页></a>
+				</div>
+		</div>
+	</div>
+
+
+
+	<div class="footer">
+		<div class="foot_link">
+			<a href="#">关于我们</a>
+			<span>|</span>
+			<a href="#">联系我们</a>
+			<span>|</span>
+			<a href="#">招聘人才</a>
+			<span>|</span>
+			<a href="#">友情链接</a>
+		</div>
+		<p>CopyRight © 2016  All Rights Reserved</p>
+		<p>电话：18870753605 </p>
+	</div>
+</body>
+</html>

@@ -1,0 +1,117 @@
+<html class="x-admin-sm" xmlns:th="http://www.thymeleaf.org">
+  <head>
+    <meta charset="UTF-8">
+    <title>会员列表</title>
+    <meta name="renderer" content="webkit">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <meta name="viewport" content="width=device-width,user-scalable=yes, minimum-scale=0.4, initial-scale=0.8,target-densitydpi=low-dpi" />
+    <link rel="stylesheet" href="/css/font.css">
+    <link rel="stylesheet" href="/css/xadmin.css">
+    <script type="text/javascript" src="https://cdn.bootcss.com/jquery/3.2.1/jquery.min.js"></script>
+    <script type="text/javascript" src="/lib/layui/layui.js" charset="utf-8"></script>
+    <script type="text/javascript" src="/js/xadmin.js"></script>
+    <script type="text/javascript" src="/js/cookie.js"></script>
+
+      <script src="https://cdn.staticfile.org/html5shiv/r29/html5.min.js"></script>
+      <script src="https://cdn.staticfile.org/respond.js/1.4.2/respond.min.js"></script>
+
+  <body>
+    <div class="x-body">
+      <table class="layui-table x-admin">
+        <colgroup>
+          <col width="40px">
+          <col width="130px">
+          <col width="700px">
+        </colgroup>
+        <thead>
+        <tr>
+          <th lay-size="ig">
+            <div class="layui-unselect header layui-form-checkbox" lay-skin="primary"><i class="layui-icon">&#xe605;</i></div>
+          </th>
+          <th>用户ID</th>
+          <th>用户信息</th>
+          <th style="text-align: center">操作</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr th:each="member:${members}">
+          <td>
+            <div class="layui-unselect layui-form-checkbox" lay-skin="primary" data-id='2'><i class="layui-icon">&#xe605;</i></div></td>
+          <td th:text="${member.user}">A201907021729</td>
+          <td th:text="' 密码：'+${member.pwd}+' 姓名：'+${member.name}+' 地址：'+${member.address}+' 电话：'+${member.tele}+' 邮箱：'+${member.email}">姓名：张三;性别：男;手机号：18888888888;家庭住址：江西省赣州市章贡区红旗大道86号江西理工大学;</td>
+          <td style="text-align: center">
+            <a title="编辑"  onclick="x_admin_show('编辑','/user/memberEdit',600,400)" href="javascript:;">
+              <button type="button" class="layui-btn layui-btn-xs layui-btn-normal">编辑</button>
+            </a>
+
+            <a title="删除" onclick="member_del(this,'要删除的id')" href="javascript:;">
+              <button type="button" class="layui-btn layui-btn-xs layui-btn-danger">删除</button>
+            </a>
+          </td>
+        </tr>
+
+        </tbody>
+      </table>
+      <xblock style="margin-top: -10px">
+        <button class="layui-btn layui-btn-danger" onclick="delAll()">批量删除</button>
+        <button class="layui-btn" onclick="x_admin_show('添加用户','/user/memberAdd',600,400)">添加</button>
+      </xblock>
+      <div class="page">
+        <div>
+          <a class="prev" href="">&lt;&lt;</a>
+          <span class="current">1</span>
+          <a class="num" href="">2</a>
+          <a class="num" href="">3</a>
+          <a class="num" href="">...</a>
+          <a class="num" href="">489</a>
+          <a class="next" href="">&gt;&gt;</a>
+        </div>
+      </div>
+
+    </div>
+    <script>
+      layui.use('laydate', function(){
+        var laydate = layui.laydate;
+
+
+        laydate.render({
+          elem: '#start'
+        });
+
+
+        laydate.render({
+          elem: '#end'
+        });
+      });
+
+
+      function member_del(obj,id){
+          layer.confirm('确认要删除吗？',function(index){
+
+              $(obj).parents("tr").remove();
+              layer.msg('已删除!',{icon:1,time:1000});
+          });
+      }
+
+
+
+      function delAll (argument) {
+
+        var data = tableCheck.getData();
+
+        layer.confirm('确认要删除吗？',function(index){
+
+            layer.msg('删除成功', {icon: 1});
+            $(".layui-form-checked").not('.header').parents('tr').remove();
+        });
+      }
+    </script>
+    <script>var _hmt = _hmt || []; (function() {
+        var hm = document.createElement("script");
+        hm.src = "https://hm.baidu.com/hm.js?b393d153aeb26b46e9431fabaf0f6190";
+        var s = document.getElementsByTagName("script")[0];
+        s.parentNode.insertBefore(hm, s);
+      })();</script>
+  </body>
+
+</html>
