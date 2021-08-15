@@ -16,6 +16,7 @@ public class DemoApplicationTests {
         System.out.println("pppppp");
         System.out.println("master test");
         System.out.println("xxxxxx");
+        System.out.println("");
     }
 
 }
